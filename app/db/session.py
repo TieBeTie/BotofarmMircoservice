@@ -3,12 +3,10 @@ from sqlalchemy.orm import sessionmaker
 
 from .base import Base
 
-engine = create_engine(
-    Base.SQLALCHEMY_DATABASE_URL
-)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_db():
-    db = Base.SessionLocal()
+    db = SessionLocal()
     try:
         yield db
     finally:

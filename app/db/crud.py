@@ -4,6 +4,12 @@ from .models import User
 class CRUD:
     def __init__(self, db: Session):
         self.db = db
+        
+    def get_user_by_id(self):
+        return self.db.query(User).filter(User.id == id).first()
+    
+    def get_users(self, id):
+        return self.db.query(User).all()
 
     def create(self, data):
         db_item = User(**data) 
@@ -11,9 +17,6 @@ class CRUD:
         self.db.commit()
         self.db.refresh(db_item)
         return db_item.id
-
-    def read(self, id):
-        return self.db.query(User).filter(User.id == id).first()  
 
     def update(self, id, data):
         item = self.db.query(User).filter(User.id == id).first() 
