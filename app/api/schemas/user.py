@@ -39,15 +39,16 @@ class UserBase(BaseModel):
             raise ValueError(f"Invalid domain value. Allowed values are {', '.join(valid_domains)}.")
         return domain
 
-class User(UserBase):
+class User(BaseModel):
     """
     Model for user data.
     """
+    user: UserBase = Field(..., description="User's main information")
     created_at: datetime = Field(..., description="User creation timestamp")
     locktime: datetime = Field(..., description="User lock timestamp")
 
 
-class UserCreate(UserBase):
+class UserCreate(BaseModel):
     """
     Model for creating a new user.
     """

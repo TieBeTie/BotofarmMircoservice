@@ -1,12 +1,11 @@
-from sqlalchemy.orm import Session
 from db.crud import CRUD
 from db.models import User
-from sqlalchemy.orm import Session
 from db.crud import CRUD
 from db.models import User
 from typing import Optional
 from typing import List
 from uuid import UUID
+from sqlalchemy.orm import Session
 
 
 class UserService:
